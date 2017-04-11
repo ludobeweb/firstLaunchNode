@@ -1,15 +1,27 @@
-const http = required('http');
-const hostname = '127.0.0.1';
-const port = 12107;
+var express = require('express');
+var appli = express();
 
-const server = http.createServer(
-	(request,response) => {
-		response.statusCode = 200;
-		response.setHeader('Content-Type','text/plain');
-		response.end('Salut cono , tu boit un pastis ?');	
+
+appli.get(
+	'/',
+	function(request,response){
+		response.send("nan nan rien a changé , tout tout a continué");
 	}
 );
 
-server.listen(port,hostname,function() {
-console.log('le serveur ecoute là bas :' + hostname + " : " + port );
+appli.get(
+	'/user',
+	function(resquest,response){
+		var retour = {
+			"nom" : "castro",
+			"prenom" : "ludovic"
+		};
+		response.json(retour);
+		}
+);
+
+
+
+appli.listen(12107, function(){
+	console.log('salut ç v la fammile , je suis un viyageur de futur que la vide ma mettre sur route toi ami ribery enfant meurt , vite aide moi steplait ami')
 });
